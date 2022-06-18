@@ -1,0 +1,31 @@
+<div class="bootstrap-timepicker">
+  <div class="form-group">
+    <label>{{placeHolder}}</label>
+    <div class="form-control datetimepicker-input" data-target-input="nearest">
+      <input matInput
+         [required]="required"
+         (dateTimeChange)="onValueChange($event)"
+         [(ngModel)]="value"
+         [formControl]="formControl"
+         [owlDateTimeTrigger]="dt1"
+         [owlDateTime]="dt1"
+         [min]="min"
+         [max]="max"
+         [owlDateTimeFilter]="owlDateTimeFilter"
+         [ngClass]="{
+            'is-invalid': hasError,
+            'is-valid': isValid
+            }"
+         autocomplete="off">
+  <owl-date-time [firstDayOfWeek]="firstDayOfWeek" #dt1
+                 [pickerType]="'calendar'"
+                 [startView]="startView"
+                 [startAt]="startAt">
+    </owl-date-time>
+    <span class="input-group-append" [owlDateTimeTrigger]="dt1" (click)="toggleClicked.emit($event)">
+          <div class="input-group-text"><i class="far fa-clock"></i></div>
+    </span>
+    <ng-content></ng-content>
+    </div>
+  </div>
+</div>

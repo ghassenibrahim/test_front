@@ -1,0 +1,66 @@
+
+  <ng-container *ngIf="datePickerType === 'YEAR_MONTH'">
+    <app-year-month-picker [value]="value"
+                           [disabled]="disabled"
+                           [placeHolder]="placeHolder"
+                           [required]="required"
+                           [hasError]="hasError"
+                           [isValid]="isValid"
+                           [min]="min"
+                           [max]="max"
+                           (toggleClicked)="toggleClicked.emit($event)"
+                           (dateChange)="onChange($event)">
+      <ng-content select="[year_month]"></ng-content>
+    </app-year-month-picker>
+  </ng-container>
+
+  <ng-container *ngIf="datePickerType === 'FULL_DATE'">
+    <app-full-date-picker [value]="value"
+                          [disabled]="disabled"
+                          [firstDayOfWeek]="firstDayOfWeek"
+                          [placeHolder]="placeHolder"
+                          [required]="required"
+                          [hasError]="hasError"
+                          [isValid]="isValid"
+                          [startView]="startView"
+                          [startAt]="startAt"
+                          [min]="min"
+                          [max]="max"
+                          (toggleClicked)="toggleClicked.emit($event)"
+                          (dateChange)="onChange($event)" >
+      <ng-content select="[full_date]"></ng-content>
+    </app-full-date-picker>
+  </ng-container>
+
+  <ng-container *ngIf="datePickerType === 'FULL_DATE_TIME'">
+    <app-full-date-time-picker [value]="value"
+                               [disabled]="disabled"
+                               [placeHolder]="placeHolder"
+                               [firstDayOfWeek]="firstDayOfWeek"
+                               [required]="required"
+                               [hasError]="hasError"
+                               [isValid]="isValid"
+                               [startView]="startView"
+                               [startAt]="startAt"
+                               [min]="min"
+                               [max]="max"
+                               (toggleClicked)="toggleClicked.emit($event)"
+                               (dateChange)="onChange($event)" >
+      <ng-content select="[full_date_time]"></ng-content>
+    </app-full-date-time-picker>
+  </ng-container>
+  <ng-container *ngIf="datePickerType === 'TIME'">
+    <app-time-picker [value]="value"
+                     [disabled]="disabled"
+                     [placeHolder]="placeHolder"
+                     [required]="required"
+                     [hasError]="hasError"
+                     [isValid]="isValid"
+                     [min]="min"
+                     [max]="max"
+                     [owlDateTimeFilter]="dateTimeFilter"
+                     (toggleClicked)="toggleClicked.emit($event)"
+                     (dateChange)="onChange($event)" >
+      <ng-content select="[time]"></ng-content>
+    </app-time-picker>
+  </ng-container>

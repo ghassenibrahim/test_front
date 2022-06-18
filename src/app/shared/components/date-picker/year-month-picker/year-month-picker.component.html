@@ -1,0 +1,28 @@
+<div class="bootstrap-timepicker">
+  <div class="form-group">
+    <label>{{placeHolder}}</label>
+    <div class="input-group date" data-target-input="nearest">
+      <input matInput
+             [owlDateTimeTrigger]="dt"
+             [owlDateTime]="dt"
+             [formControl]="yearMonth"
+             [required]="required"
+             [min]="min"
+             [max]="max"
+             [owlDateTimeFilter]="owlDateTimeFilter"
+             autocomplete="off">
+      <owl-date-time [firstDayOfWeek]="1"
+                     [pickerType]="'calendar'"
+                     [startView]="startView"
+                     (yearSelected)="chosenYearHandler($event)"
+                     (monthSelected)="chosenMonthHandler($event, dt)"
+                     #dt="owlDateTime"></owl-date-time>
+      <div class="input-group-append" [owlDateTimeTrigger]="dt" (click)="toggleClicked.emit($event)">
+        <div class="input-group-text"><i class="far fa-clock"></i></div>
+      </div>
+      <ng-content></ng-content>
+    </div>
+  </div>
+</div>
+
+

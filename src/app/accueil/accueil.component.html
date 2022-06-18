@@ -1,0 +1,88 @@
+<!-- start header -->
+<nav class="navbar navbar-dark bg-primary">
+    <a style="margin-left: 20px;margin-top: 2%;" class="navbar-brand" href="">WELCOME</a>
+
+    <div class="collapse navbar-collapse" id="navbarText">
+
+        <li><a class="navbar-text" style="margin-left: 70%;margin-top: 2%; " [routerLink]="['/login']">Logout</a></li>
+
+    </div>
+</nav>
+<!-- final header -->
+<header class="header">
+    <div class="header__inner container">
+        <h1 class="header__title">Task List</h1>
+        <form class="todo-form">
+            <div class="todo-form__group">
+                <input type="text" class="todo-form__input" type="text" name="name" placeholder="Todo Title..." [(ngModel)]="task.name" />
+            </div>
+            <div class="todo-form__group">
+                <textarea placeholder="Description.." class="todo-form__textarea" type="text" name="description" [(ngModel)]=" task.description ">Todo Description...</textarea>
+            </div>
+
+            <div class="todo-form__group">
+                <input type="text" class="todo-form__input" type="date" name="createdAt" [(ngModel)]="task.updatedOn" />
+            </div>
+            <div class="todo-form__group">
+                <select class="todo-form__input" type="status" name="status" [(ngModel)]="task.status">
+          <option value="completed" selected>completed</option>
+          <option value="waiting">waiting</option>
+        </select>
+            </div>
+
+            <button type="button" class="btn btn--primary " (click)=saveTask()>Submit</button>
+        </form>
+        <div class="header__filters ">
+            <div class="header__filters__item ">
+                <span class="material-icons-outlined "> clear </span> blue
+            </div>
+            <div class="header__filters__item ">
+                <span class="material-icons-outlined "> clear </span> completed
+            </div>
+        </div>
+
+    </div>
+</header>
+<!-- end header -->
+
+<!-- start body -->
+<div class="body ">
+    <div class="container ">
+        <div class="cards " *ngFor="let p of tasks ">
+            <div class="cards__row ">
+
+                <div class="card " style=" width: 100%; ">
+                    <div class=" card__header ">
+                        <h3 class="card__title ">{{p.name}}</h3>
+                        <div class="card__remove-icon ">
+                            <span class="material-icons-outlined "> clear </span>
+                        </div>
+                    </div>
+                    <div class="card__body ">
+                        <p class="card__text ">{{p.description}}</p>
+                        <p class="card__text ">{{p.createdAt | date:'medium'}}</p>
+                        <p class="card__text ">{{p.updatedOn | date:'medium'}}</p>
+                        <button type="button" class="btn btn-danger" (click)="delete(p.id) ">Delete task</button>
+
+
+                    </div>
+
+                    <div class="card__footer ">
+
+                        <div class="footer__item ">
+                            <span class="material-icons-outlined "> clear </span> {{p.status}}
+                        </div>
+                    </div>
+                    <div class="card__dropdown ">
+                        <div class="card__dropdown__toggler ">
+                            <span class="material-icons-outlined "> more_vert </span>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end body -->
